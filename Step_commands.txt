@@ -1,0 +1,28 @@
+Ref: https://github.com/khoubyari/spring-boot-rest-example
+------------------------------
+yum install maven
+
+yum install git
+
+yum install docker
+
+Create Dockerfile
+
+docker build -t rest-api .
+--------------------------------
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+sudo groupadd docker
+sudo usermod -aG docker root
+sudo service docker start
+--------------------------------
+docker run -p 8090:8090 -p 8091:8091 -it rest-api
+--------------------------------
+
+docker tag rest-api gcr.io/crypto-gantry-244719/rest-api-image
+
+gcloud  auth login
+
+docker push gcr.io/crypto-gantry-244719/rest-api-image
+
+docker run -p 8090:8090 -p 8091:8091 -it gcr.io/crypto-gantry-244719/rest-api-image 
